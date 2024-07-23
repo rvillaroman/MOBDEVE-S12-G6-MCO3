@@ -1,14 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookFragment">
+    android:background="#000000"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book your seats!"
+            android:textColor="#FF0000"
+            android:textSize="24sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"/>
+
+        <Spinner
+            android:id="@+id/spinnerMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"/>
+
+        <Spinner
+            android:id="@+id/spinnerLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"/>
+
+        <Spinner
+            android:id="@+id/spinnerTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"/>
+
+        <Spinner
+            android:id="@+id/spinnerDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"/>
+
+        <Spinner
+            android:id="@+id/spinnerTickets"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="16dp"
+            android:spinnerMode="dropdown"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Screen"
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-medium"/>
+
+        <GridLayout
+            android:id="@+id/gridSeats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="14"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp">
+
+            <!-- Hardcoded seats as Buttons -->
+            <!-- Row A -->
+            <Button android:text="A1" style="@style/SeatButton"/>
+            <Button android:text="A2" style="@style/SeatButton"/>
+            <Button android:text="A3" style="@style/SeatButton"/>
+            <Button android:text="A4" style="@style/SeatButton"/>
+            <Button android:text="A5" style="@style/SeatButton"/>
+            <Button android:text="A6" style="@style/SeatButton"/>
+            <Button android:text="A7" style="@style/SeatButton"/>
+            <Button android:text="A8" style="@style/SeatButton"/>
+            <Button android:text="A9" style="@style/SeatButton"/>
+            <Button android:text="A10" style="@style/SeatButton"/>
+            <Button android:text="A11" style="@style/SeatButton"/>
+            <Button android:text="A12" style="@style/SeatButton"/>
+            <Button android:text="A13" style="@style/SeatButton"/>
+            <Button android:text="A14" style="@style/SeatButton"/>
+            <!-- Row B -->
+            <Button android:text="B1" style="@style/SeatButton"/>
+            <Button android:text="B2" style="@style/SeatButton"/>
+            <Button android:text="B3" style="@style/SeatButton"/>
+            <Button android:text="B4" style="@style/SeatButton"/>
+            <Button android:text="B5" style="@style/SeatButton"/>
+            <Button android:text="B6" style="@style/SeatButton"/>
+            <Button android:text="B7" style="@style/SeatButton"/>
+            <Button android:text="B8" style="@style/SeatButton"/>
+            <Button android:text="B9" style="@style/SeatButton"/>
+            <Button android:text="B10" style="@style/SeatButton"/>
+            <Button android:text="B11" style="@style/SeatButton"/>
+            <Button android:text="B12" style="@style/SeatButton"/>
+            <Button android:text="B13" style="@style/SeatButton"/>
+            <Button android:text="B14" style="@style/SeatButton"/>
+            <!-- Row C -->
+            <Button android:text="C1" style="@style/SeatButton"/>
+            <Button android:text="C2" style="@style/SeatButton"/>
+            <Button android:text="C3" style="@style/SeatButton"/>
+            <Button android:text="C4" style="@style/SeatButton"/>
+            <Button android:text="C5" style="@style/SeatButton"/>
+            <Button android:text="C6" style="@style/SeatButton"/>
+            <Button android:text="C7" style="@style/SeatButton"/>
+            <Button android:text="C8" style="@style/SeatButton"/>
+            <Button android:text="C9" style="@style/SeatButton"/>
+            <Button android:text="C10" style="@style/SeatButton"/>
+            <Button android:text="C11" style="@style/SeatButton"/>
+            <Button android:text="C12" style="@style/SeatButton"/>
+            <Button android:text="C13" style="@style/SeatButton"/>
+            <Button android:text="C14" style="@style/SeatButton"/>
+            <!-- Row D -->
+            <Button android:text="D1" style="@style/SeatButton"/>
+            <Button android:text="D2" style="@style/SeatButton"/>
+            <Button android:text="D3" style="@style/SeatButton"/>
+            <Button android:text="D4" style="@style/SeatButton"/>
+            <Button android:text="D5" style="@style/SeatButton"/>
+            <Button android:text="D6" style="@style/SeatButton"/>
+            <Button android:text="D7" style="@style/SeatButton"/>
+            <Button android:text="D8" style="@style/SeatButton"/>
+            <Button android:text="D9" style="@style/SeatButton"/>
+            <Button android:text="D10" style="@style/SeatButton"/>
+            <Button android:text="D11" style="@style/SeatButton"/>
+            <Button android:text="D12" style="@style/SeatButton"/>
+            <Button android:text="D13" style="@style/SeatButton"/>
+            <Button android:text="D14" style="@style/SeatButton"/>
+            <!-- Row E -->
+            <Button android:text="E1" style="@style/SeatButton"/>
+            <Button android:text="E2" style="@style/SeatButton"/>
+            <Button android:text="E3" style="@style/SeatButton"/>
+            <Button android:text="E4" style="@style/SeatButton"/>
+            <Button android:text="E5" style="@style/SeatButton"/>
+            <Button android:text="E6" style="@style/SeatButton"/>
+            <Button android:text="E7" style="@style/SeatButton"/>
+            <Button android:text="E8" style="@style/SeatButton"/>
+            <Button android:text="E9" style="@style/SeatButton"/>
+            <Button android:text="E10" style="@style/SeatButton"/>
+            <Button android:text="E11" style="@style/SeatButton"/>
+            <Button android:text="E12" style="@style/SeatButton"/>
+            <Button android:text="E13" style="@style/SeatButton"/>
+            <Button android:text="E14" style="@style/SeatButton"/>
+            <!-- Row F -->
+            <Button android:text="F1" style="@style/SeatButton"/>
+            <Button android:text="F2" style="@style/SeatButton"/>
+            <Button android:text="F3" style="@style/SeatButton"/>
+            <Button android:text="F4" style="@style/SeatButton"/>
+            <Button android:text="F5" style="@style/SeatButton"/>
+            <Button android:text="F6" style="@style/SeatButton"/>
+            <Button android:text="F7" style="@style/SeatButton"/>
+            <Button android:text="F8" style="@style/SeatButton"/>
+            <Button android:text="F9" style="@style/SeatButton"/>
+            <Button android:text="F10" style="@style/SeatButton"/>
+            <Button android:text="F11" style="@style/SeatButton"/>
+            <Button android:text="F12" style="@style/SeatButton"/>
+            <Button android:text="F13" style="@style/SeatButton"/>
+            <Button android:text="F14" style="@style/SeatButton"/>
+            <!-- Row G -->
+            <Button android:text="G1" style="@style/SeatButton"/>
+            <Button android:text="G2" style="@style/SeatButton"/>
+            <Button android:text="G3" style="@style/SeatButton"/>
+            <Button android:text="G4" style="@style/SeatButton"/>
+            <Button android:text="G5" style="@style/SeatButton"/>
+            <Button android:text="G6" style="@style/SeatButton"/>
+            <Button android:text="G7" style="@style/SeatButton"/>
+            <Button android:text="G8" style="@style/SeatButton"/>
+            <Button android:text="G9" style="@style/SeatButton"/>
+            <Button android:text="G10" style="@style/SeatButton"/>
+            <Button android:text="G11" style="@style/SeatButton"/>
+            <Button android:text="G12" style="@style/SeatButton"/>
+            <Button android:text="G13" style="@style/SeatButton"/>
+            <Button android:text="G14" style="@style/SeatButton"/>
+        </GridLayout>
+
+        <Button
+            android:id="@+id/btnProceedToPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Proceed to Payment"
+            android:backgroundTint="#FF0000"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-medium"/>
+    </LinearLayout>
+</ScrollView>

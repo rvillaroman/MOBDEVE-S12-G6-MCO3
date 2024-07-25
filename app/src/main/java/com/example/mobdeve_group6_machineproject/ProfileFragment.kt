@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.material.button.MaterialButton
 
 class ProfileFragment : Fragment() {
 
@@ -24,14 +24,15 @@ class ProfileFragment : Fragment() {
 
         val tvUsername: TextView = view.findViewById(R.id.tvUsername)
         val ivProfilePicture: ImageView = view.findViewById(R.id.ivProfilePicture)
-        val btnAccountSettings: MaterialButton = view.findViewById(R.id.btnAccountSettings)
-        val btnAppSettings: MaterialButton = view.findViewById(R.id.btnAppSettings)
-        val btnFeedback: MaterialButton = view.findViewById(R.id.btnFeedback)
-        val btnContactUs: MaterialButton = view.findViewById(R.id.btnContactUs)
-        val btnLogout: MaterialButton = view.findViewById(R.id.btnLogout)
+        val btnAccountSettings: Button = view.findViewById(R.id.btnAccountSettings)
+        val btnAppSettings: Button = view.findViewById(R.id.btnAppSettings)
+        val btnFeedback: Button = view.findViewById(R.id.btnFeedback)
+        val btnContactUs: Button = view.findViewById(R.id.btnContactUs)
+        val btnLogout: Button = view.findViewById(R.id.btnLogout)
+        val ivNotificationIcon: ImageView = view.findViewById(R.id.ivNotificationIcon)
 
         // Set placeholder values
-        tvUsername.text = "usernametest"
+        tvUsername.text = "hazelroquim"
         ivProfilePicture.setImageResource(R.drawable.ic_profile)
 
         // Handle button clicks
@@ -53,6 +54,14 @@ class ProfileFragment : Fragment() {
 
         btnLogout.setOnClickListener {
             // Handle Log Out click
+        }
+
+        ivNotificationIcon.setOnClickListener {
+            // Replace ProfileFragment with NotificationsFragment
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, NotificationsFragment())
+                .addToBackStack(null)
+                .commit()
         }
     }
 }

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivAppLogo"
+        android:layout_width="154dp"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/film_find_logo" />
+
+    <ImageView
+        android:id="@+id/ivNotificationIcon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_notification_white" />
+
+    <TextView
+        android:id="@+id/tvNotificationsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivAppLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="NOTIFICATIONS"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNotificationsTitle"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:id="@+id/llNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:id="@+id/tvNotificationDate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="14/06/2024 08:14 PM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvNotificationTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNotificationDate1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Exciting News! Inside Out 2 Premieres in 3 Days!"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvNotificationText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNotificationTitle1"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Don't miss out on the chance to be among the first to watch Inside Out 2. Grab your tickets now and prepare for a day of thrilling entertainment!"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvNotificationDate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="22/05/2024 09:14 AM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvNotificationTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNotificationDate2"
+                    android:text="Now Showing: Furiosa at Your Nearby Cinema!"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvNotificationText2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNotificationTitle2"
+                    android:layout_marginTop="8dp"
+                    android:text="Don't miss the chance to dive into the action-packed world of Furiosa. Experience the thrill, the excitement, and the drama on the big screen."
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

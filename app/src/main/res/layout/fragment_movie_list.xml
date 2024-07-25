@@ -1,14 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieListFragment">
+    android:background="#000000"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/ivAppLogo"
+        android:layout_width="154dp"
+        android:layout_height="57dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/film_find_logo" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tvGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivAppLogo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Hello, User!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tvMovieListTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvGreeting"
+        android:layout_marginTop="16dp"
+        android:text="Movie List"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"/>
+
+    <TextView
+        android:id="@+id/tvFilterMovies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvGreeting"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:text="Filter Movies"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMovieListTitle"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Movie 1 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF0000"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/ivMoviePoster1"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_insideout2"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tvMovieTitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster1"
+                    android:layout_marginStart="16dp"
+                    android:text="Inside Out 2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvMovieRating1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvMovieTitle1"
+                    android:layout_marginStart="8dp"
+                    android:text="★ 4.5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvMovieDetails1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster1"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieTitle1"
+                    android:text="2024 | 1hr 36m"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvMovieDescription1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster1"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieDetails1"
+                    android:layout_marginTop="8dp"
+                    android:text="Journey back into the mind of Riley as she faces new challenges in her teenage years. As Riley navigates high school, her emotions – Joy, Sadness, Anger, Fear, and Disgust..."
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvViewMoreDetails1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster1"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieDescription1"
+                    android:layout_marginTop="8dp"
+                    android:text="View More Details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+            <!-- Movie 2 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF0000"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/ivMoviePoster2"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_theexorcism"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tvMovieTitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster2"
+                    android:layout_marginStart="16dp"
+                    android:text="The Exorcism"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvMovieRating2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvMovieTitle2"
+                    android:layout_marginStart="8dp"
+                    android:text="★ 4.2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvMovieDetails2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster2"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieTitle2"
+                    android:text="2024 | 1hr 33m"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvMovieDescription2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster2"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieDetails2"
+                    android:layout_marginTop="8dp"
+                    android:text="A troubled actor begins to unravel while shooting a horror film. His estranged daughter wonders if he's slipping back into his past addictions or if there's something more sinister at play."
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvViewMoreDetails2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster2"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieDescription2"
+                    android:layout_marginTop="8dp"
+                    android:text="View More Details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+            <!-- Movie 3 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FF0000"
+                android:padding="16dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/ivMoviePoster3"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/ic_furiosa"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/tvMovieTitle3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster3"
+                    android:layout_marginStart="16dp"
+                    android:text="Furiosa"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvMovieRating3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvMovieTitle3"
+                    android:layout_marginStart="8dp"
+                    android:text="★ 4.8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tvMovieDetails3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster3"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieTitle3"
+                    android:text="2024 | 2hr 28m"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvMovieDescription3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster3"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieDetails3"
+                    android:layout_marginTop="8dp"
+                    android:text="Snatched from the Green Place of Many Mothers, young Furiosa falls into the hands of a great biker horde led by the warlord Dementus. Sweeping through the Wasteland, they come across the Citadel, presided over by the Immortan Joe."
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tvViewMoreDetails3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivMoviePoster3"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@id/tvMovieDescription3"
+                    android:layout_marginTop="8dp"
+                    android:text="View More Details"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

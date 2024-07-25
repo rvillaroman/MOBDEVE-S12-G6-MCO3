@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvBackToList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back to Movie List"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+
+    <ImageView
+        android:id="@+id/ivMoviePoster"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_insideout2"
+        android:layout_below="@id/tvBackToList"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tvMovieTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inside Out 2"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/ivMoviePoster" />
+
+    <TextView
+        android:id="@+id/tvMovieRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="★ 4.5"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_toEndOf="@id/tvMovieTitle"
+        android:layout_marginStart="8dp"
+        android:layout_below="@id/ivMoviePoster"/>
+
+    <TextView
+        android:id="@+id/tvMovieDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2024 | 1hr 36m"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@id/tvMovieTitle"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvMovieDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Journey back into the mind of Riley as she faces new challenges in her teenage years. As Riley navigates high school, her emotions – Joy, Sadness, Anger, Fear, and Disgust – are back in action, encountering an array of new emotions vying for control. This time, they're joined by fresh faces like Confusion, Surprise, and Love, bringing even more chaos and hilarity to Headquarters. With Riley's world expanding, her emotions must work together to help her tackle friendships, self-discovery, and the growing pains of adolescence. Inside Out 2 promises a heartfelt and humorous adventure, showing that growing up is a journey best navigated with all your emotions onboard."
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@id/tvMovieDetails"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tvCast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cast:"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/tvMovieDescription"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvDirector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Director:"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/tvCast"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnBookNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Now"
+        android:backgroundTint="@color/colorSecondary"
+        android:textColor="@color/colorOnSecondary"
+        android:layout_below="@id/tvDirector"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"/>
+</RelativeLayout>

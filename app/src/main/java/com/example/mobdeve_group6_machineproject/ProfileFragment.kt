@@ -32,7 +32,7 @@ class ProfileFragment : Fragment() {
         val ivNotificationIcon: ImageView = view.findViewById(R.id.ivNotificationIcon)
 
         // Set placeholder values
-        tvUsername.text = "hazelroquim"
+        tvUsername.text = "usernameTest"
         ivProfilePicture.setImageResource(R.drawable.ic_profile)
 
         // Handle button clicks

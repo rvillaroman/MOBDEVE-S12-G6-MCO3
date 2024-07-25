@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvBackToReviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back to Movie Reviews"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvWriteReviewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Write a review!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/tvBackToReviews"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvShareExperience"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share your insights and experience with other users!"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@id/tvWriteReviewTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/etReviewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:layout_below="@id/tvShareExperience"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:id="@+id/starLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/etReviewTitle"
+        android:layout_marginBottom="16dp"
+        android:gravity="center">
+
+        <!-- Add your star rating views here using TextViews -->
+        <TextView
+            android:id="@+id/star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etReviewBody"
+        android:layout_width="378dp"
+        android:layout_height="280dp"
+        android:layout_below="@id/starLayout"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:hint="Please enter your review here"
+        android:minLines="5"
+        android:padding="12dp" />
+
+    <Button
+        android:id="@+id/btnSubmitReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:backgroundTint="@color/colorSecondary"
+        android:textColor="@color/colorOnSecondary"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/etReviewBody" />
+</RelativeLayout>

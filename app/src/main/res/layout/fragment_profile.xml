@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
@@ -7,27 +8,28 @@
 
     <ImageView
         android:id="@+id/ivAppLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="154dp"
+        android:layout_height="57dp"
         android:layout_alignParentStart="true"
         android:layout_marginTop="16dp"
-        android:src="@drawable/film_find_logo"/>
+        android:src="@drawable/film_find_logo" />
 
     <ImageView
         android:id="@+id/ivNotificationIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_notification_white"/>
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_notification_white" />
 
     <ImageView
         android:id="@+id/ivProfilePicture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_below="@id/ivAppLogo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/ic_profile"
         android:scaleType="centerCrop"
         android:background="@drawable/circle_background" />
@@ -53,67 +55,83 @@
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAccountSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Account Settings"
-            android:drawableStart="@drawable/ic_account_settings_white"
-            android:drawablePadding="8dp"
-            android:backgroundTint="@color/colorSecondary"
-            android:textColor="@color/colorOnSecondary"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
-            android:gravity="start|center_vertical"/>
+            android:backgroundTint="@color/colorSecondary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|center_vertical"
+            android:padding="12dp"
+            android:text="Account Settings"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="16sp"
+            app:icon="@drawable/ic_account_settings_white"
+            app:iconGravity="start"
+            app:iconPadding="16dp"
+            app:iconSize="25dp" /> <!-- Increased padding -->
+        app:iconSize="25dp"
+        app:iconTint="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAppSettings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="App Settings"
-            android:drawableStart="@drawable/ic_app_settings_white"
-            android:drawablePadding="8dp"
-            android:backgroundTint="@color/colorSecondary"
-            android:textColor="@color/colorOnSecondary"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
-            android:gravity="start|center_vertical"/>
+            android:backgroundTint="@color/colorSecondary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|center_vertical"
+            android:padding="12dp"
+            android:text="App Settings"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="16sp"
+            app:icon="@drawable/ic_app_settings_white"
+            app:iconGravity="start"
+            app:iconPadding="16dp"
+            app:iconSize="25dp" /> <!-- Increased padding -->
+        app:iconSize="25dp"
+        app:iconTint="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnFeedback"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Feedback"
-            android:drawableStart="@drawable/ic_feedback_white"
-            android:drawablePadding="8dp"
-            android:backgroundTint="@color/colorSecondary"
-            android:textColor="@color/colorOnSecondary"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
-            android:gravity="start|center_vertical"/>
+            android:backgroundTint="@color/colorSecondary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|center_vertical"
+            android:padding="12dp"
+            android:text="Feedback"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="16sp"
+            app:icon="@drawable/ic_feedback_white"
+            app:iconGravity="start"
+            app:iconPadding="16dp"
+            app:iconSize="25dp" /> <!-- Increased padding -->
+        app:iconSize="25dp"
+        app:iconTint="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnContactUs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contact Us"
-            android:drawableStart="@drawable/ic_contact_us_white"
-            android:drawablePadding="8dp"
-            android:backgroundTint="@color/colorSecondary"
-            android:textColor="@color/colorOnSecondary"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="8dp"
-            android:gravity="start|center_vertical"/>
+            android:backgroundTint="@color/colorSecondary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="start|center_vertical"
+            android:padding="12dp"
+            android:text="Contact Us"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="16sp"
+            app:icon="@drawable/ic_contact_us_white"
+            app:iconGravity="start"
+            app:iconPadding="16dp"
+            app:iconSize="25dp" /> <!-- Increased padding -->
+        app:iconSize="25dp"
+        app:iconTint="@color/white" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,7 +141,6 @@
             android:padding="12dp"
             android:textSize="16sp"
             android:fontFamily="sans-serif-medium"
-            android:layout_marginTop="16dp"
-            android:gravity="center"/>
+            android:layout_marginTop="16dp"/>
     </LinearLayout>
 </RelativeLayout>

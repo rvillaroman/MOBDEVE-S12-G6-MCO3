@@ -30,11 +30,11 @@ class DatabaseOperations(context: Context) {
         if (cursor.moveToFirst()) {
             do {
                 val user = User()
-                user.userId = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.USER_ID))
-                user.userName = cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_NAME))
-                user.userUsername = cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_USERNAME))
-                user.userBirthday = cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_BIRTHDAY))
-                user.userPassword = cursor.getString(cursor.getColumnIndex(DatabaseHelper.USER_PASSWORD))
+                user.userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID))
+                user.userName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_NAME))
+                user.userUsername = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_USERNAME))
+                user.userBirthday = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_BIRTHDAY))
+                user.userPassword = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_PASSWORD))
                 userList.add(user)
             } while (cursor.moveToNext())
         }
@@ -83,14 +83,14 @@ class DatabaseOperations(context: Context) {
         if (cursor.moveToFirst()) {
             do {
                 val movie = Movies()
-                movie.movieId = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.MOVIE_ID))
-                movie.movieName = cursor.getString(cursor.getColumnIndex(DatabaseHelper.MOVIE_NAME))
-                movie.movieRating = cursor.getFloat(cursor.getColumnIndex(DatabaseHelper.MOVIE_RATING))
-                movie.movieReleaseDate = cursor.getString(cursor.getColumnIndex(DatabaseHelper.MOVIE_RELEASE_DATE))
-                movie.movieDuration = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.MOVIE_DURATION))
-                movie.movieDescription = cursor.getString(cursor.getColumnIndex(DatabaseHelper.MOVIE_DESCRIPTION))
-                movie.movieCast = cursor.getString(cursor.getColumnIndex(DatabaseHelper.MOVIE_CAST))
-                movie.movieDirector = cursor.getString(cursor.getColumnIndex(DatabaseHelper.MOVIE_DIRECTOR))
+                movie.movieId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_ID))
+                movie.movieName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_NAME))
+                movie.movieRating = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_RATING))
+                movie.movieReleaseDate = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_RELEASE_DATE))
+                movie.movieDuration = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DURATION))
+                movie.movieDescription = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DESCRIPTION))
+                movie.movieCast = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_CAST))
+                movie.movieDirector = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DIRECTOR))
                 movieList.add(movie)
             } while (cursor.moveToNext())
         }

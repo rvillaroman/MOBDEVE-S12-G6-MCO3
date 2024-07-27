@@ -1,5 +1,8 @@
 package com.example.mobdeve_group6_machineproject
+
+import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -60,5 +63,23 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db?.execSQL("DROP TABLE IF EXISTS $USER_TABLE")
         db?.execSQL("DROP TABLE IF EXISTS $MOVIE_TABLE")
         onCreate(db)
+    }
+
+    // Method to add a new user
+    fun addUser(name: String, username: String, birthday: String, password: String): Long {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(USER_NAME, name)
+        contentValues.put(USER_USERNAME, username)
+        contentValues.put(USER_BIRTHDAY, birthday)
+        contentValues.put(USER_PASSWORD, password)
+
+        return db.insert(USER_TABLE, null, contentValues)
+    }
+
+    // Method to get a user based on username and password
+    fun getUser(username: String, password: String): Cursor? {
+        val db = this.readableDatabase
+        return db.rawQuery("SELECT * FROM $USER_TABLE WHERE $USER_USERNAME = ? AND $USER_PASSWORD = ?", arrayOf(username, password))
     }
 }

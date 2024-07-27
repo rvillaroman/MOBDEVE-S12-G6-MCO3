@@ -20,9 +20,14 @@ class MovieListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val tvGreeting: TextView = view.findViewById(R.id.tvGreeting)
         val tvViewMoreDetails1: TextView = view.findViewById(R.id.tvViewMoreDetails1)
         val tvViewMoreDetails2: TextView = view.findViewById(R.id.tvViewMoreDetails2)
         val tvViewMoreDetails3: TextView = view.findViewById(R.id.tvViewMoreDetails3)
+
+        // Retrieve the username from the arguments
+        val username = arguments?.getString("USERNAME")
+        tvGreeting.text = "Welcome, $username"
 
         tvViewMoreDetails1.setOnClickListener {
             loadMovieDetailFragment()

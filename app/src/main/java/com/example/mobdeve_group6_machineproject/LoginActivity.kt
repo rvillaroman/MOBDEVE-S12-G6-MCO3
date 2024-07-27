@@ -1,5 +1,6 @@
 package com.example.mobdeve_group6_machineproject
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -33,8 +34,11 @@ class LoginActivity : AppCompatActivity() {
                 val cursor = databaseHelper.getUser(username, password)
                 if (cursor != null && cursor.count > 0) {
                     cursor.close()
+                    saveLoginState(username)
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, HomeActivity::class.java)
+                    val intent = Intent(this, HomeActivity::class.java).apply {
+                        putExtra("USERNAME", username)
+                    }
                     startActivity(intent)
                     finish()
                 } else {
@@ -50,5 +54,12 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun saveLoginState(username: String) {
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("USERNAME", username)
+        editor.apply()
     }
 }

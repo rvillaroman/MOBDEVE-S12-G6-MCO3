@@ -1,5 +1,7 @@
 package com.example.mobdeve_group6_machineproject
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,8 +33,11 @@ class ProfileFragment : Fragment() {
         val btnLogout: Button = view.findViewById(R.id.btnLogout)
         val ivNotificationIcon: ImageView = view.findViewById(R.id.ivNotificationIcon)
 
+        // Retrieve the username from the arguments
+        val username = arguments?.getString("USERNAME")
+        tvUsername.text = username
+
         // Set placeholder values
-        tvUsername.text = "usernameTest"
         ivProfilePicture.setImageResource(R.drawable.ic_profile)
 
         // Handle button clicks
@@ -53,7 +58,7 @@ class ProfileFragment : Fragment() {
         }
 
         btnLogout.setOnClickListener {
-            // Handle Log Out click
+            logout()
         }
 
         ivNotificationIcon.setOnClickListener {
@@ -63,5 +68,17 @@ class ProfileFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+    }
+
+    private fun logout() {
+        val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+
+        val intent = Intent(activity, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        requireActivity().finish()
     }
 }

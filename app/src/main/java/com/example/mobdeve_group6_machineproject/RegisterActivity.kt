@@ -15,7 +15,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnCreateAccount: Button
     private lateinit var tvLogin: TextView
-    private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var dbOperations: DatabaseOperations
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         etConfirmPassword = findViewById(R.id.etConfirmPassword)
         btnCreateAccount = findViewById(R.id.btnCreateAccount)
         tvLogin = findViewById(R.id.tvLogin)
-        databaseHelper = DatabaseHelper(this)
+        dbOperations = DatabaseOperations(this)
 
         btnCreateAccount.setOnClickListener {
             val name = etName.text.toString()
@@ -38,13 +38,16 @@ class RegisterActivity : AppCompatActivity() {
             val confirmPassword = etConfirmPassword.text.toString()
 
             if (name.isNotEmpty() && username.isNotEmpty() && birthday.isNotEmpty() && password.isNotEmpty() && password == confirmPassword) {
-                val userId = databaseHelper.addUser(name, username, birthday, password)
-                if (userId > -1) {
-                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
-                    finish()
-                } else {
-                    Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show()
-                }
+                val user = User(
+                    userId = 0, // Assuming 0 will be auto-incremented by the database
+                    userName = name,
+                    userUsername = username,
+                    userBirthday = birthday,
+                    userPassword = password
+                )
+                dbOperations.addUser(user)
+                Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+                finish()
             } else {
                 Toast.makeText(this, "Please fill in all fields and make sure passwords match", Toast.LENGTH_SHORT).show()
             }

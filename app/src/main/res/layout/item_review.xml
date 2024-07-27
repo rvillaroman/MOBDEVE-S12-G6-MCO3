@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:padding="16dp"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tvReviewerName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reviewer Name"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <TextView
+        android:id="@+id/tvReviewDate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Review Date"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/tvReviewText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReviewerName1"
+        android:layout_marginTop="4dp"
+        android:text="Review Text"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
+
+    <TextView
+        android:id="@+id/tvReviewRating1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvReviewText1"
+        android:layout_marginTop="4dp"
+        android:text="★★★★★"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
+</RelativeLayout>

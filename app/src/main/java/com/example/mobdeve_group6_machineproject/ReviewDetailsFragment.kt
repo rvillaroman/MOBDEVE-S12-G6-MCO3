@@ -1,17 +1,18 @@
 package com.example.mobdeve_group6_machineproject
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 
 class ReviewDetailsFragment : Fragment() {
 
-    private lateinit var databaseOperations: DatabaseOperations
+    private lateinit var llReviews: LinearLayout
+    private lateinit var btnWriteReview: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,50 +24,44 @@ class ReviewDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        databaseOperations = DatabaseOperations(requireContext())
+        llReviews = view.findViewById(R.id.llReviews)
+        btnWriteReview = view.findViewById(R.id.btnWriteReview)
 
-        val movieTitle = arguments?.getString("movieTitle")
-        val movieDetails = arguments?.getString("movieDetails")
-        val movieRating = arguments?.getDouble("movieRating")
-        val movieDescription = arguments?.getString("movieDescription")
-        val moviePoster = arguments?.getInt("moviePoster")
+        arguments?.let {
+            val reviewTitle = it.getString("REVIEW_TITLE")
+            val reviewBody = it.getString("REVIEW_BODY")
+            val rating = it.getInt("REVIEW_RATING")
+            val reviewDate = it.getString("REVIEW_DATE")
+            val reviewUsername = it.getString("REVIEW_USERNAME")
 
-        view.findViewById<TextView>(R.id.tvMovieTitle).text = movieTitle
-        view.findViewById<TextView>(R.id.tvMovieDetails).text = movieDetails
-        view.findViewById<TextView>(R.id.tvMovieRating).text = "★ $movieRating"
-        view.findViewById<TextView>(R.id.tvMovieDescription).text = movieDescription
-        view.findViewById<ImageView>(R.id.ivMoviePoster).setImageResource(moviePoster ?: R.drawable.ic_insideout2) // Replace with the actual default image if needed
-
-        // Fetch and display reviews for movie
-        displayReviews(movieTitle)
-
-
-        view.findViewById<TextView>(R.id.tvBackToList).setOnClickListener {
-            activity?.supportFragmentManager?.popBackStack()
+            addReviewToLayout(reviewTitle, reviewBody, rating, reviewDate, reviewUsername)
         }
 
-        view.findViewById<Button>(R.id.btnWriteReview).setOnClickListener {
-            val fragment = WriteReviewFragment()
-            val bundle = Bundle().apply {
-                putString("movieTitle", movieTitle)
-            }
-            fragment.arguments = bundle
-
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container, fragment)
-                ?.addToBackStack(null)
-                ?.commit()
+        btnWriteReview.setOnClickListener {
+            navigateToWriteReview()
         }
     }
 
-    private fun displayReviews(movieTitle: String?) {
-        if (movieTitle != null) {
-            val reviews = databaseOperations.getAllReview()
+    private fun addReviewToLayout(title: String?, body: String?, rating: Int, date: String?, username: String?) {
+        val reviewView = LayoutInflater.from(context).inflate(R.layout.item_review, llReviews, false)
+        val tvReviewerName: TextView = reviewView.findViewById(R.id.tvReviewerName1)
+        val tvReviewDate: TextView = reviewView.findViewById(R.id.tvReviewDate1)
+        val tvReviewText: TextView = reviewView.findViewById(R.id.tvReviewText1)
+        val tvReviewRating: TextView = reviewView.findViewById(R.id.tvReviewRating1)
 
-            val reviewTextView = view?.findViewById<TextView>(R.id.tvReviewList)
-            reviewTextView?.text = reviews.joinToString(separator = "\n") { review ->
-                "Title: ${review.reviewTitle}\nRating: ${review.reviewRating}\nReview: ${review.reviewInput}"
-            }
-        }
+        tvReviewerName.text = username ?: "Unknown User"
+        tvReviewDate.text = date ?: "Unknown Date"
+        tvReviewText.text = body
+        tvReviewRating.text = "★".repeat(rating)
+
+        llReviews.addView(reviewView)
+    }
+
+    private fun navigateToWriteReview() {
+        val writeReviewFragment = WriteReviewFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, writeReviewFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

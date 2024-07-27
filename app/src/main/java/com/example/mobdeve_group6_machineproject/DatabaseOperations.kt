@@ -3,9 +3,6 @@ package com.example.mobdeve_group6_machineproject
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import com.example.mobdeve_group6_machineproject.Movies
-import com.example.mobdeve_group6_machineproject.User
-import com.example.mobdeve_group6_machineproject.Reviews
 
 class DatabaseOperations(context: Context) {
     private val dbHelper = DatabaseHelper(context)
@@ -13,11 +10,12 @@ class DatabaseOperations(context: Context) {
     // User Operations
     fun addUser(user: User) {
         val db = dbHelper.writableDatabase
-        val values = ContentValues()
-        values.put(DatabaseHelper.USER_NAME, user.userName)
-        values.put(DatabaseHelper.USER_USERNAME, user.userUsername)
-        values.put(DatabaseHelper.USER_BIRTHDAY, user.userBirthday)
-        values.put(DatabaseHelper.USER_PASSWORD, user.userPassword)
+        val values = ContentValues().apply {
+            put(DatabaseHelper.USER_NAME, user.userName)
+            put(DatabaseHelper.USER_USERNAME, user.userUsername)
+            put(DatabaseHelper.USER_BIRTHDAY, user.userBirthday)
+            put(DatabaseHelper.USER_PASSWORD, user.userPassword)
+        }
 
         db.insert(DatabaseHelper.USER_TABLE, null, values)
         db.close()
@@ -31,12 +29,13 @@ class DatabaseOperations(context: Context) {
 
         if (cursor.moveToFirst()) {
             do {
-                val user = User()
-                user.userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID))
-                user.userName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_NAME))
-                user.userUsername = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_USERNAME))
-                user.userBirthday = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_BIRTHDAY))
-                user.userPassword = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_PASSWORD))
+                val user = User(
+                    userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID)),
+                    userName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_NAME)),
+                    userUsername = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_USERNAME)),
+                    userBirthday = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_BIRTHDAY)),
+                    userPassword = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_PASSWORD))
+                )
                 userList.add(user)
             } while (cursor.moveToNext())
         }
@@ -46,11 +45,12 @@ class DatabaseOperations(context: Context) {
 
     fun updateUser(user: User): Int {
         val db = dbHelper.writableDatabase
-        val values = ContentValues()
-        values.put(DatabaseHelper.USER_NAME, user.userName)
-        values.put(DatabaseHelper.USER_USERNAME, user.userUsername)
-        values.put(DatabaseHelper.USER_BIRTHDAY, user.userBirthday)
-        values.put(DatabaseHelper.USER_PASSWORD, user.userPassword)
+        val values = ContentValues().apply {
+            put(DatabaseHelper.USER_NAME, user.userName)
+            put(DatabaseHelper.USER_USERNAME, user.userUsername)
+            put(DatabaseHelper.USER_BIRTHDAY, user.userBirthday)
+            put(DatabaseHelper.USER_PASSWORD, user.userPassword)
+        }
 
         return db.update(
             DatabaseHelper.USER_TABLE,
@@ -73,14 +73,15 @@ class DatabaseOperations(context: Context) {
     // Movie Operations
     fun addMovie(movie: Movies) {
         val db = dbHelper.writableDatabase
-        val values = ContentValues()
-        values.put(DatabaseHelper.MOVIE_NAME, movie.movieName)
-        values.put(DatabaseHelper.MOVIE_RATING, movie.movieRating)
-        values.put(DatabaseHelper.MOVIE_RELEASE_DATE, movie.movieReleaseDate)
-        values.put(DatabaseHelper.MOVIE_DURATION, movie.movieDuration)
-        values.put(DatabaseHelper.MOVIE_DESCRIPTION, movie.movieDescription)
-        values.put(DatabaseHelper.MOVIE_CAST, movie.movieCast)
-        values.put(DatabaseHelper.MOVIE_DIRECTOR, movie.movieDirector)
+        val values = ContentValues().apply {
+            put(DatabaseHelper.MOVIE_NAME, movie.movieName)
+            put(DatabaseHelper.MOVIE_RATING, movie.movieRating)
+            put(DatabaseHelper.MOVIE_RELEASE_DATE, movie.movieReleaseDate)
+            put(DatabaseHelper.MOVIE_DURATION, movie.movieDuration)
+            put(DatabaseHelper.MOVIE_DESCRIPTION, movie.movieDescription)
+            put(DatabaseHelper.MOVIE_CAST, movie.movieCast)
+            put(DatabaseHelper.MOVIE_DIRECTOR, movie.movieDirector)
+        }
 
         db.insert(DatabaseHelper.MOVIE_TABLE, null, values)
         db.close()
@@ -94,15 +95,16 @@ class DatabaseOperations(context: Context) {
 
         if (cursor.moveToFirst()) {
             do {
-                val movie = Movies()
-                movie.movieId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_ID))
-                movie.movieName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_NAME))
-                movie.movieRating = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_RATING))
-                movie.movieReleaseDate = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_RELEASE_DATE))
-                movie.movieDuration = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DURATION))
-                movie.movieDescription = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DESCRIPTION))
-                movie.movieCast = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_CAST))
-                movie.movieDirector = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DIRECTOR))
+                val movie = Movies().apply {
+                    movieId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_ID))
+                    movieName = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_NAME))
+                    movieRating = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_RATING))
+                    movieReleaseDate = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_RELEASE_DATE))
+                    movieDuration = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DURATION))
+                    movieDescription = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DESCRIPTION))
+                    movieCast = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_CAST))
+                    movieDirector = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.MOVIE_DIRECTOR))
+                }
                 movieList.add(movie)
             } while (cursor.moveToNext())
         }
@@ -112,14 +114,15 @@ class DatabaseOperations(context: Context) {
 
     fun updateMovie(movie: Movies): Int {
         val db = dbHelper.writableDatabase
-        val values = ContentValues()
-        values.put(DatabaseHelper.MOVIE_NAME, movie.movieName)
-        values.put(DatabaseHelper.MOVIE_RATING, movie.movieRating)
-        values.put(DatabaseHelper.MOVIE_RELEASE_DATE, movie.movieReleaseDate)
-        values.put(DatabaseHelper.MOVIE_DURATION, movie.movieDuration)
-        values.put(DatabaseHelper.MOVIE_DESCRIPTION, movie.movieDescription)
-        values.put(DatabaseHelper.MOVIE_CAST, movie.movieCast)
-        values.put(DatabaseHelper.MOVIE_DIRECTOR, movie.movieDirector)
+        val values = ContentValues().apply {
+            put(DatabaseHelper.MOVIE_NAME, movie.movieName)
+            put(DatabaseHelper.MOVIE_RATING, movie.movieRating)
+            put(DatabaseHelper.MOVIE_RELEASE_DATE, movie.movieReleaseDate)
+            put(DatabaseHelper.MOVIE_DURATION, movie.movieDuration)
+            put(DatabaseHelper.MOVIE_DESCRIPTION, movie.movieDescription)
+            put(DatabaseHelper.MOVIE_CAST, movie.movieCast)
+            put(DatabaseHelper.MOVIE_DIRECTOR, movie.movieDirector)
+        }
 
         return db.update(
             DatabaseHelper.MOVIE_TABLE,
@@ -140,34 +143,34 @@ class DatabaseOperations(context: Context) {
     }
 
     // Review Operations
-
-    fun addReview(review: Reviews) {
+    fun addReview(review: Review) {
         val db = dbHelper.writableDatabase
-        val values = ContentValues()
-        values.put(DatabaseHelper.REVIEW_TITLE, review.reviewTitle)
-        values.put(DatabaseHelper.REVIEW_RATING, review.reviewRating)
-        values.put(DatabaseHelper.REVIEW_INPUT, review.reviewInput)
-        values.put(DatabaseHelper.REVIEW_USER_ID, review.userId)
+        val values = ContentValues().apply {
+            put(DatabaseHelper.REVIEW_TITLE, review.reviewTitle)
+            put(DatabaseHelper.REVIEW_RATING, review.reviewRating)
+            put(DatabaseHelper.REVIEW_INPUT, review.reviewInput)
+            put(DatabaseHelper.REVIEW_USER_ID, review.userId)
+        }
 
         db.insert(DatabaseHelper.REVIEW_TABLE, null, values)
         db.close()
     }
 
-    fun getAllReview(): List<Reviews> {
-        val reviewList = ArrayList<Reviews>()
+    fun getAllReview(): List<Review> {
+        val reviewList = ArrayList<Review>()
         val selectQuery = "SELECT * FROM ${DatabaseHelper.REVIEW_TABLE}"
         val db = dbHelper.writableDatabase
         val cursor: Cursor = db.rawQuery(selectQuery, null)
 
         if (cursor.moveToFirst()) {
             do {
-                val review = Reviews()
-                review.userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID))
-                review.reviewTitle = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_TITLE))
-                review.reviewRating = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_RATING))
-                review.reviewInput = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_INPUT))
-                review.reviewId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_ID))
-
+                val review = Review(
+                    reviewId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_ID)),
+                    reviewTitle = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_TITLE)),
+                    reviewRating = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_RATING)),
+                    reviewInput = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_INPUT)),
+                    userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_USER_ID))
+                )
                 reviewList.add(review)
             } while (cursor.moveToNext())
         }
@@ -175,13 +178,14 @@ class DatabaseOperations(context: Context) {
         return reviewList
     }
 
-    fun updateReview(review: Reviews): Int {
+    fun updateReview(review: Review): Int {
         val db = dbHelper.writableDatabase
-        val values = ContentValues()
-        values.put(DatabaseHelper.REVIEW_TITLE, review.reviewTitle)
-        values.put(DatabaseHelper.REVIEW_RATING, review.reviewRating)
-        values.put(DatabaseHelper.REVIEW_INPUT, review.reviewInput)
-        values.put(DatabaseHelper.REVIEW_USER_ID, review.userId)
+        val values = ContentValues().apply {
+            put(DatabaseHelper.REVIEW_TITLE, review.reviewTitle)
+            put(DatabaseHelper.REVIEW_RATING, review.reviewRating)
+            put(DatabaseHelper.REVIEW_INPUT, review.reviewInput)
+            put(DatabaseHelper.REVIEW_USER_ID, review.userId)
+        }
 
         return db.update(
             DatabaseHelper.REVIEW_TABLE,
@@ -191,7 +195,7 @@ class DatabaseOperations(context: Context) {
         )
     }
 
-    fun deleteReview(review: Reviews) {
+    fun deleteReview(review: Review) {
         val db = dbHelper.writableDatabase
         db.delete(
             DatabaseHelper.REVIEW_TABLE,

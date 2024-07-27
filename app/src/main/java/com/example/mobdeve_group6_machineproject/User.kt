@@ -1,9 +1,9 @@
 package com.example.mobdeve_group6_machineproject
 
-class User {
-    var userId: Int = 0
-    var userName: String = ""
-    var userUsername: String = ""
-    var userBirthday: String = ""
-    var userPassword: String = ""
-}
+data class User(
+    val userId: Int = 0,
+    val userName: String,
+    val userUsername: String,
+    val userBirthday: String,
+    val userPassword: String
+)

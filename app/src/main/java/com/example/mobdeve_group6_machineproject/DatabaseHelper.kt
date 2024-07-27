@@ -29,6 +29,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         const val MOVIE_DESCRIPTION = "movieDescription"
         const val MOVIE_CAST = "movieCast"
         const val MOVIE_DIRECTOR = "movieDirector"
+
+        // Review table
+        const val REVIEW_TABLE = "reviews"
+        const val REVIEW_ID = "reviewId"
+        const val REVIEW_TITLE = "reviewTitle"
+        const val REVIEW_RATING = "reviewRating"
+        const val REVIEW_INPUT = "reviewInput"
+        const val REVIEW_USER_ID = "userId"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -54,14 +62,29 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             $MOVIE_DIRECTOR TEXT
             )
         """
+
+        val CREATE_REVIEW_TABLE = """
+            CREATE TABLE $REVIEW_TABLE (
+                $REVIEW_ID INTEGER PRIMARY KEY,
+                $REVIEW_TITLE TEXT,
+                $REVIEW_RATING REAL,
+                $REVIEW_INPUT TEXT,
+                $REVIEW_USER_ID INTEGER,
+                FOREIGN KEY($REVIEW_USER_ID) REFERENCES $USER_TABLE($USER_ID)
+            )
+        """
+
         db.execSQL(CREATE_USER_TABLE)
         db.execSQL(CREATE_MOVIE_TABLE)
+        db.execSQL(CREATE_REVIEW_TABLE)
 
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $USER_TABLE")
         db?.execSQL("DROP TABLE IF EXISTS $MOVIE_TABLE")
+        db?.execSQL("DROP TABLE IF EXISTS $REVIEW_TABLE")
+
         onCreate(db)
     }
 

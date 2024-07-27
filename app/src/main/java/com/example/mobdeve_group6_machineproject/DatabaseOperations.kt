@@ -5,10 +5,12 @@ import android.content.Context
 import android.database.Cursor
 import com.example.mobdeve_group6_machineproject.Movies
 import com.example.mobdeve_group6_machineproject.User
+import com.example.mobdeve_group6_machineproject.Reviews
 
 class DatabaseOperations(context: Context) {
     private val dbHelper = DatabaseHelper(context)
 
+    // User Operations
     fun addUser(user: User) {
         val db = dbHelper.writableDatabase
         val values = ContentValues()
@@ -50,15 +52,25 @@ class DatabaseOperations(context: Context) {
         values.put(DatabaseHelper.USER_BIRTHDAY, user.userBirthday)
         values.put(DatabaseHelper.USER_PASSWORD, user.userPassword)
 
-        return db.update(DatabaseHelper.USER_TABLE, values, "${DatabaseHelper.USER_ID} = ?", arrayOf(user.userId.toString()))
+        return db.update(
+            DatabaseHelper.USER_TABLE,
+            values,
+            "${DatabaseHelper.USER_ID} = ?",
+            arrayOf(user.userId.toString())
+        )
     }
 
     fun deleteUser(user: User) {
         val db = dbHelper.writableDatabase
-        db.delete(DatabaseHelper.USER_TABLE, "${DatabaseHelper.USER_ID} = ?", arrayOf(user.userId.toString()))
+        db.delete(
+            DatabaseHelper.USER_TABLE,
+            "${DatabaseHelper.USER_ID} = ?",
+            arrayOf(user.userId.toString())
+        )
         db.close()
     }
 
+    // Movie Operations
     fun addMovie(movie: Movies) {
         val db = dbHelper.writableDatabase
         val values = ContentValues()
@@ -109,12 +121,83 @@ class DatabaseOperations(context: Context) {
         values.put(DatabaseHelper.MOVIE_CAST, movie.movieCast)
         values.put(DatabaseHelper.MOVIE_DIRECTOR, movie.movieDirector)
 
-        return db.update(DatabaseHelper.MOVIE_TABLE, values, "${DatabaseHelper.MOVIE_ID} = ?", arrayOf(movie.movieId.toString()))
+        return db.update(
+            DatabaseHelper.MOVIE_TABLE,
+            values,
+            "${DatabaseHelper.MOVIE_ID} = ?",
+            arrayOf(movie.movieId.toString())
+        )
     }
 
     fun deleteMovie(movie: Movies) {
         val db = dbHelper.writableDatabase
-        db.delete(DatabaseHelper.MOVIE_TABLE, "${DatabaseHelper.MOVIE_ID} = ?", arrayOf(movie.movieId.toString()))
+        db.delete(
+            DatabaseHelper.MOVIE_TABLE,
+            "${DatabaseHelper.MOVIE_ID} = ?",
+            arrayOf(movie.movieId.toString())
+        )
+        db.close()
+    }
+
+    // Review Operations
+
+    fun addReview(review: Reviews) {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues()
+        values.put(DatabaseHelper.REVIEW_TITLE, review.reviewTitle)
+        values.put(DatabaseHelper.REVIEW_RATING, review.reviewRating)
+        values.put(DatabaseHelper.REVIEW_INPUT, review.reviewInput)
+        values.put(DatabaseHelper.REVIEW_USER_ID, review.userId)
+
+        db.insert(DatabaseHelper.REVIEW_TABLE, null, values)
+        db.close()
+    }
+
+    fun getAllReview(): List<Reviews> {
+        val reviewList = ArrayList<Reviews>()
+        val selectQuery = "SELECT * FROM ${DatabaseHelper.REVIEW_TABLE}"
+        val db = dbHelper.writableDatabase
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val review = Reviews()
+                review.userId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.USER_ID))
+                review.reviewTitle = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_TITLE))
+                review.reviewRating = cursor.getFloat(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_RATING))
+                review.reviewInput = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_INPUT))
+                review.reviewId = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.REVIEW_ID))
+
+                reviewList.add(review)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return reviewList
+    }
+
+    fun updateReview(review: Reviews): Int {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues()
+        values.put(DatabaseHelper.REVIEW_TITLE, review.reviewTitle)
+        values.put(DatabaseHelper.REVIEW_RATING, review.reviewRating)
+        values.put(DatabaseHelper.REVIEW_INPUT, review.reviewInput)
+        values.put(DatabaseHelper.REVIEW_USER_ID, review.userId)
+
+        return db.update(
+            DatabaseHelper.REVIEW_TABLE,
+            values,
+            "${DatabaseHelper.REVIEW_ID} = ?",
+            arrayOf(review.reviewId.toString())
+        )
+    }
+
+    fun deleteReview(review: Reviews) {
+        val db = dbHelper.writableDatabase
+        db.delete(
+            DatabaseHelper.REVIEW_TABLE,
+            "${DatabaseHelper.REVIEW_ID} = ?",
+            arrayOf(review.reviewId.toString())
+        )
         db.close()
     }
 }

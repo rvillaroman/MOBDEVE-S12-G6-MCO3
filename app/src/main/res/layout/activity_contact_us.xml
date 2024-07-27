@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvBackToProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back to My Profile"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvContactUsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Us"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/tvBackToProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do you have any concerns with the app that need our attention? Please use the form below to submit your query."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@id/tvContactUsTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:layout_below="@id/tvInstructions"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888" />
+
+    <EditText
+        android:id="@+id/etQuery"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:hint="Please enter your query here"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:layout_below="@id/etTitle"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:minLines="5" />
+
+    <Button
+        android:id="@+id/btnSubmitQuery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:backgroundTint="#FF0000"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/etQuery" />
+
+</RelativeLayout>

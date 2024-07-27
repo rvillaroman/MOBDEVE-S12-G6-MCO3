@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvBackToProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back to My Profile"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvFeedbackTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send us feedback!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/tvBackToProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do you have any feedback with the app? Please describe your experience through the star rating and entry box."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif"
+        android:layout_below="@id/tvFeedbackTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+    <LinearLayout
+        android:id="@+id/starLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tvInstructions"
+        android:layout_marginBottom="16dp"
+        android:gravity="center">
+
+        <!-- Star rating views using TextViews -->
+        <TextView
+            android:id="@+id/star1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+
+        <TextView
+            android:id="@+id/star5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☆"
+            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etFeedbackBody"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:hint="Please enter your feedback here"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:layout_below="@id/starLayout"
+        android:layout_marginBottom="16dp"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        android:minLines="5" />
+
+    <Button
+        android:id="@+id/btnSubmitFeedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:backgroundTint="#FF0000"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_below="@id/etFeedbackBody" />
+
+</RelativeLayout>

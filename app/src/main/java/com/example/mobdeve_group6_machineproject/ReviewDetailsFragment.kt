@@ -11,6 +11,8 @@ import android.widget.Button
 
 class ReviewDetailsFragment : Fragment() {
 
+    private lateinit var databaseOperations: DatabaseOperations
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,6 +22,8 @@ class ReviewDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        databaseOperations = DatabaseOperations(requireContext())
 
         val movieTitle = arguments?.getString("movieTitle")
         val movieDetails = arguments?.getString("movieDetails")
@@ -32,6 +36,10 @@ class ReviewDetailsFragment : Fragment() {
         view.findViewById<TextView>(R.id.tvMovieRating).text = "★ $movieRating"
         view.findViewById<TextView>(R.id.tvMovieDescription).text = movieDescription
         view.findViewById<ImageView>(R.id.ivMoviePoster).setImageResource(moviePoster ?: R.drawable.ic_insideout2) // Replace with the actual default image if needed
+
+        // Fetch and display reviews for movie
+        displayReviews(movieTitle)
+
 
         view.findViewById<TextView>(R.id.tvBackToList).setOnClickListener {
             activity?.supportFragmentManager?.popBackStack()
@@ -48,6 +56,17 @@ class ReviewDetailsFragment : Fragment() {
                 ?.replace(R.id.fragment_container, fragment)
                 ?.addToBackStack(null)
                 ?.commit()
+        }
+    }
+
+    private fun displayReviews(movieTitle: String?) {
+        if (movieTitle != null) {
+            val reviews = databaseOperations.getAllReview()
+
+            val reviewTextView = view?.findViewById<TextView>(R.id.tvReviewList)
+            reviewTextView?.text = reviews.joinToString(separator = "\n") { review ->
+                "Title: ${review.reviewTitle}\nRating: ${review.reviewRating}\nReview: ${review.reviewInput}"
+            }
         }
     }
 }

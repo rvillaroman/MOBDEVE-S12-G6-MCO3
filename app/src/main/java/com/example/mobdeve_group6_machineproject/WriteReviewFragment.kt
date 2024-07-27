@@ -12,6 +12,8 @@ import android.widget.Button
 class WriteReviewFragment : Fragment() {
 
     private var selectedRating = 0
+    private lateinit var databaseOperations: DatabaseOperations
+    private var movieTitle: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +24,10 @@ class WriteReviewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        databaseOperations = DatabaseOperations(requireContext())
+
+        movieTitle = arguments?.getString("movieTitle")
 
         view.findViewById<TextView>(R.id.tvBackToReviews).setOnClickListener {
             activity?.supportFragmentManager?.popBackStack()
@@ -45,7 +51,15 @@ class WriteReviewFragment : Fragment() {
             val reviewTitle = view.findViewById<EditText>(R.id.etReviewTitle).text.toString()
             val reviewBody = view.findViewById<EditText>(R.id.etReviewBody).text.toString()
 
-            // Handle review submission logic here (e.g., save to database, send to server, etc.)
+            // Assume userId is 1 for demonstration purposes, update accordingly
+            val userId = 1
+
+            val review = Reviews().apply {
+                this.reviewTitle = reviewTitle
+                this.reviewRating = selectedRating.toFloat()
+                this.reviewInput = reviewBody
+                this.userId = userId
+            }
 
             activity?.supportFragmentManager?.popBackStack()
         }
